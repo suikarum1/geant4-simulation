@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="schema/gdml.xsd">
+
+    <define>
+         <position name="p_tiange_shift" unit="mm" x="0.0" y="0.0" z="18.0"/>
+         <!-- position for silicon PM waffer -->
+         <position name="p_SiPM_0" unit="mm" x="21.0" y="21.0" z="10.425"/>
+         <position name="p_SiPM_1" unit="mm" x="21.0" y="-21.0" z="10.425"/>
+         <position name="p_SiPM_2" unit="mm" x="-21.0" y="-21.0" z="10.425"/>
+         <position name="p_SiPM_3" unit="mm" x="-21.0" y="21.0" z="10.425"/>
+         <!-- position for crystal skin -->
+         <position name="p_CrySkin_00" unit="mm" x="21.0" y="21.0" z="21.0325"/>
+         <position name="p_CrySkin_10" unit="mm" x="21.0" y="-21.0" z="21.0325"/>
+         <position name="p_CrySkin_20" unit="mm" x="-21.0" y="-21.0" z="21.0325"/>
+         <position name="p_CrySkin_30" unit="mm" x="-21.0" y="21.0" z="21.0325"/>
+         <!-- position for glue btw crystal and SiPM -->
+         <position name="p_CryGlue_0" unit="mm" x="21.0" y="21.0" z="10.8"/>
+         <position name="p_CryGlue_1" unit="mm" x="21.0" y="-21.0" z="10.8"/>
+         <position name="p_CryGlue_2" unit="mm" x="-21.0" y="-21.0" z="10.8"/>
+         <position name="p_CryGlue_3" unit="mm" x="-21.0" y="21.0" z="10.8"/>
+    </define>
+
+    <solids>
+        <box lunit="mm" name="tiange_box" x="94.0" y="94.0" z="50.0" />
+        <box lunit="mm" name="silicon_PM_solid" x="25.0" y="25.0" z="0.4" />
+
+        <!-- crystal skin solid  -->
+        <box lunit="mm" name="crystal_skin_solid" x="34.0" y="34.0" z="0.065" />
+
+        <!-- crystal contact with SiPM (a = 22 mm) -->
+        <box lunit="mm" name="glue_box_solid" x="22.0" y="22.0" z="0.335" />
+    </solids>
+
+    <structure>
+        <volume name="SiPM_volume">
+            <materialref ref="Silicon"/>
+            <solidref ref="silicon_PM_solid"/>
+        </volume>
+        <volume name="crystal_skin_volume">
+            <materialref ref="G4_PLEXIGLASS"/>
+            <solidref ref="crystal_skin_solid"/>
+        </volume>
+        <volume name="crystal_glue_volume">
+            <materialref ref="G4_PLEXIGLASS"/>
+            <solidref ref="glue_box_solid"/>
+        </volume>
+
+        <volume name="tiange_volume">
+            <materialref ref="Vacuum"/>
+            <solidref ref="tiange_box"/>
+            <physvol>
+                <file name="tiange_mesh/bottom_std.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+            </physvol>
+            <physvol>
+                <file name="tiange_mesh/top_std.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+            </physvol>
+            <physvol>
+                <file name="tiange_mesh/middle_high_precision.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+            </physvol>
+            <physvol>
+                <file name="tiange_mesh/crystal_0.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+            </physvol>
+            <physvol>
+                <file name="tiange_mesh/crystal_1.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+            </physvol>
+            <physvol>
+                <file name="tiange_mesh/crystal_2.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+            </physvol>
+            <physvol>
+                <file name="tiange_mesh/crystal_3.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+            </physvol>
+            <physvol>
+                <file name="tiange_mesh/SiPM_std_PCB.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+            </physvol>
+            <physvol>
+                <file name="tiange_mesh/DAQBoard_std.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+            </physvol>
+            <physvol>
+                <file name="tiange_mesh/PreAmp_std.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+            </physvol>
+
+            <!-- screw parts -->
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/copper_pad01.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/copper_pad02.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/copper_pad03.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/copper_pad04.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/copper_pad05.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/copper_pad06.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/copper_pad07.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/copper_pad.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/crossrecessedpanheadscrewsgb_GB_CROSS_SCREWS_TYPE1M2X4-4Htype-N002.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/crossrecessedpanheadscrewsgb_GB_CROSS_SCREWS_TYPE1M2X4-4Htype-N003.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/crossrecessedpanheadscrewsgb_GB_CROSS_SCREWS_TYPE1M2X4-4Htype-N004.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/crossrecessedpanheadscrewsgb_GB_CROSS_SCREWS_TYPE1M2X4-4Htype-N005.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/hexagonsocketheadcapscrewsgb_GB_FASTENER_SCREWS_HSHCSM2.5X12-N001.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/hexagonsocketheadcapscrewsgb_GB_FASTENER_SCREWS_HSHCSM2.5X12-N002.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/hexagonsocketheadcapscrewsgb_GB_FASTENER_SCREWS_HSHCSM2.5X12-N003.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/hexagonsocketheadcapscrewsgb_GB_FASTENER_SCREWS_HSHCSM2.5X12-N004.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/hexagonsocketheadcapscrewsgb_GB_FASTENER_SCREWS_HSHCSM2.5X12-N005.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/hexagonsocketheadcapscrewsgb_GB_FASTENER_SCREWS_HSHCSM2.5X12-N.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/hexagonsocketheadcapscrewsgb_GB_FASTENER_SCREWS_HSHCSM2.5X20-N001.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/hexagonsocketheadcapscrewsgb_GB_FASTENER_SCREWS_HSHCSM2.5X20-N002.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/hexagonsocketheadcapscrewsgb_GB_FASTENER_SCREWS_HSHCSM2.5X20-N.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/hexagonsocketheadcapscrewsgb_GB_FASTENER_SCREWS_HSHCSM3X6-N007.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/hexagonsocketheadcapscrewsgb_GB_FASTENER_SCREWS_HSHCSM3X6-N008.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/hexagonsocketheadcapscrewsgb_GB_FASTENER_SCREWS_HSHCSM3X6-N009.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/hexagonsocketheadcapscrewsgb_GB_FASTENER_SCREWS_HSHCSM3X6-N010.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/hexagonsocketheadcapscrewsgb_GB_FASTENER_SCREWS_HSHCSM3X6-N011.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/hexagonsocketheadcapscrewsgb_GB_FASTENER_SCREWS_HSHCSM3X6-N012.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/hexagonsocketheadcapscrewsgb_GB_FASTENER_SCREWS_HSHCSM3X6-N013.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/hexagonsocketheadcapscrewsgb_GB_FASTENER_SCREWS_HSHCSM3X6-N014.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/hexsocketsetscrewswithflatpointgb_GB_FASTENER_SCREWS_HSFPM4X4-N001.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/hexsocketsetscrewswithflatpointgb_GB_FASTENER_SCREWS_HSFPM4X4-N002.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/hexsocketsetscrewswithflatpointgb_GB_FASTENER_SCREWS_HSFPM4X4-N003.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/hexsocketsetscrewswithflatpointgb_GB_FASTENER_SCREWS_HSFPM4X4-N004.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/hexsocketsetscrewswithflatpointgb_GB_FASTENER_SCREWS_HSFPM4X4-N005.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/hexsocketsetscrewswithflatpointgb_GB_FASTENER_SCREWS_HSFPM4X4-N006.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/hexsocketsetscrewswithflatpointgb_GB_FASTENER_SCREWS_HSFPM4X4-N007.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+            <physvol>
+                <file name="tiange_mesh/screw_mesh/hexsocketsetscrewswithflatpointgb_GB_FASTENER_SCREWS_HSFPM4X4-N.gdml"/>
+                <positionref ref="p_tiange_shift"/>
+             </physvol>
+
+            <!-- silicon PM waffer -->
+            <physvol>
+                <volumeref ref="SiPM_volume"/>
+                <positionref ref="p_SiPM_0"/>
+            </physvol>
+            <physvol>
+                <volumeref ref="SiPM_volume"/>
+                <positionref ref="p_SiPM_1"/>
+            </physvol>
+            <physvol>
+                <volumeref ref="SiPM_volume"/>
+                <positionref ref="p_SiPM_2"/>
+            </physvol>
+            <physvol>
+                <volumeref ref="SiPM_volume"/>
+                <positionref ref="p_SiPM_3"/>
+            </physvol>
+
+            <!-- crystal skin -->
+            <physvol>
+                <volumeref ref="crystal_skin_volume"/>
+                <positionref ref="p_CrySkin_00"/>
+            </physvol>
+            <physvol>
+                <volumeref ref="crystal_skin_volume"/>
+                <positionref ref="p_CrySkin_10"/>
+            </physvol>
+            <physvol>
+                <volumeref ref="crystal_skin_volume"/>
+                <positionref ref="p_CrySkin_20"/>
+            </physvol>
+            <physvol>
+                <volumeref ref="crystal_skin_volume"/>
+                <positionref ref="p_CrySkin_30"/>
+            </physvol>
+
+            <!-- glue btw crystal and SiPM -->
+            <physvol>
+                <volumeref ref="crystal_glue_volume"/>
+                <positionref ref="p_CryGlue_0"/>
+            </physvol>
+            <physvol>
+                <volumeref ref="crystal_glue_volume"/>
+                <positionref ref="p_CryGlue_1"/>
+            </physvol>
+            <physvol>
+                <volumeref ref="crystal_glue_volume"/>
+                <positionref ref="p_CryGlue_2"/>
+            </physvol>
+            <physvol>
+                <volumeref ref="crystal_glue_volume"/>
+                <positionref ref="p_CryGlue_3"/>
+            </physvol>
+        </volume>
+    </structure>
+
+    <setup name="Default" version="1.0">
+        <world ref="tiange_volume"/>
+    </setup>
+</gdml>
